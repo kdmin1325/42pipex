@@ -8,7 +8,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include "libft/libft.h"
 
 int	process_make(int argc, char **argv)
 {
