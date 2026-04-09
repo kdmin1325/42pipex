@@ -8,18 +8,29 @@ ex) /bin/cat main.c | /bin/grep "= "
 - 명령어만 들어는 경우
 cat main.c | grep "= "
 
+- gcc *.c; ./a.out /bin/cat main.c "/bin/grep "= a""
+이따구로 들어오는 경우도 봐야하네.
+
 -  /bin, /usr/bin, /sbin 구분해야 하는가?
+
+" 처리 하는 방법에 따라서 결과가 달라질 것 같음ㄷㄷ
+
+1. 처음부터 들어오다가 공백이 있으면 +1
+2. "을 만나면 
+
 
 2. free
 - 파이프생성 혹은 pid, malloc 실패한 경우
 
 - 근데 성공하면 프로세서가 죽으니까 필요없나...? 진짜 모름
 
-- fd close 실패 케이스도 확인해야 함.
+- fd close 실패 케이스도 확인해야 함. + dup
 
 3. 자식프로세서와 부모프로세서 생성 순서. 아마 상관없기는 것 같긴 함.
 
 4. here_doc 함수 구현 생각해야함.
+
+
 
 
 open, close, read, write,
@@ -31,3 +42,4 @@ unlink, wait, waitpid
 
 특히: unlink
 왜 필요하지??
+
