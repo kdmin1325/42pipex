@@ -8,7 +8,9 @@ ex) /bin/cat main.c | /bin/grep "= "
 - 명령어만 들어는 경우
 cat main.c | grep "= "
 
-- gcc *.c; ./a.out /bin/cat main.c "/bin/grep "= a""
+gcc *.c; ./a.out /bin/cat main.c "/bin/grep "= a""
+gcc *.c; ./a.out /bin/cat main.c "/bin/grep "= a
+그럼 뒤에는 
 이따구로 들어오는 경우도 봐야하네.
 
 -  /bin, /usr/bin, /sbin 구분해야 하는가?

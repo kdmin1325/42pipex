@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include "libft/libft.h"
 
 int	process_make(int argc, char **argv)
 {
@@ -33,33 +34,37 @@ int	process_make(int argc, char **argv)
 	return (0);
 }
 
+void	ft_free_split_str(char** str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free (str[i++]);
+	free (str[i]);
+	free (str);
+}
+
 int	main(int argc, char **argv)
 {
-	char	**file;
+	char	**cmd;
 	char	*sh;
 	int		i;
 	int		argc_index;
 
-	file = malloc(sizeof(char *) * 5);
-	sh = malloc(sizeof(char *) * 10);
 	i = 0;
 	argc_index = 0;
-	printf("%s\n", argv[0]);
-	printf("%s\n", argv[1]);
-	printf("%s\n", argv[2]);
-	printf("%s\n", argv[3]);
-	printf("%s\n", argv[4]);
-	while (argc_index < argc - 3)
+	while (++argc_index < (argc - 1))
 	{
-		file[0] = argv[++argc_index];
-		file[1] = argv[++argc_index];
-		file[2] = NULL;
-		process_make(2, file);
+		cmd = ft_split(argv[argc_index], ' ');
+		process_make(2, cmd);
+		ft_free_split_str(cmd);
+		free (cmd);
 	}
-	file[0] = argv[++argc_index];
-	file[1] = argv[++argc_index];
-	file[2] = NULL;
-	execve(file[0], file, NULL);
+	return (0);
+	cmd = ft_split(argv[argc_index], ' ');
+	int test = execve(cmd[0], cmd, NULL);
+	printf("zsh: command not found: %s\n", cmd[0]);
 	
 	return (0);
 }
