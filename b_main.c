@@ -48,7 +48,7 @@ void	ft_free_split_str(char** str)
 int	main(int argc, char **argv)
 {
 	char	**cmd;
-	char	*sh;
+	char	*infile;
 	int		i;
 	int		argc_index;
 
@@ -59,12 +59,8 @@ int	main(int argc, char **argv)
 		cmd = ft_split(argv[argc_index], ' ');
 		process_make(2, cmd);
 		ft_free_split_str(cmd);
-		free (cmd);
 	}
-	return (0);
 	cmd = ft_split(argv[argc_index], ' ');
-	int test = execve(cmd[0], cmd, NULL);
-	printf("zsh: command not found: %s\n", cmd[0]);
-	
+	execve(cmd[0], cmd, NULL);
 	return (0);
 }
